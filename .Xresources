@@ -1,0 +1,66 @@
+! URxvt settings
+URxvt.inheritPixmap: false
+urxvt.transparent: false
+URxvt.imLocale: en_US.UTF-8
+URxvt.scrollBar: false
+URxvt.saveLines: 500
+URxvt.cursorBlink: true
+URxvt.geometry: 100x25
+URxvt.fading: 30%
+URxvt.allow_bold: true
+URxvt.internalBorder: 3
+URxvt.letterSpace:0
+URxvt*perl-lib:         /usr/lib/urxvt/perl/
+URxvt*perl-ext-common:  default,matcher,font-size
+URxvt*url-launcher:     /usr/bin/firefox
+URxvt*matcher.button:   1
+URxvt*matcher.pattern.1:\\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+! Xft Settings (font)
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.rgba:rgba
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.dpi: 92
+*font:        xft:xos4 Terminess Powerline:style=Regular:pixelsize=18,xft:TerminessTTF Nerd Font:pixelsize=20:style=Medium
+*boldFont:    xft:xos4 Terminess Powerline:style=Bold:pixelsize=18,xft:TerminessTTF Nerd Font:pixelsize=20:style=Bold
+xterm*faceName: Terminess Powerline:pixelsize=14:style=Regular
+! special
+urxvt.foreground:   #c1c4c2
+urxvt.background:   #1d1f21
+urxvt.cursorColor:  #d2c5bc
+! black
+URxvt*color0:       #1d1f21
+URxvt*color8:       #303030
+! red
+URxvt*color1:       #d73555
+URxvt*color9:       #c76484
+! green
+URxvt*color2:       #35d755
+URxvt*color10:      #64c784
+! yellow
+URxvt*color3:       #d7d755
+URxvt*color11:      #c7c784
+! blue
+URxvt*color4:       #3555d7
+URxvt*color12:      #6484c7
+! magenta
+URxvt*color5:       #d755d7
+! purple
+URxvt*color13:      #7355d7
+! cyan
+URxvt*color6:       #55b7b7
+
+URxvt*color14:      #84c7c7
+!#84c7c7
+! white
+URxvt*color7:       #505050
+URxvt*color15:      #d7d7d7
+#include ".config/Xresources.d/t-i3.x"
+!#include "~/.config/Xresources.d/t-netbook.x"

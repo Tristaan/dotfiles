@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/tristan/build/rineja/app'
+let g:netrw_dirhist_2='/home/tristan/build/rineja/app/assets'
+let g:netrw_dirhist_3='/home/tristan/build/rineja/app/assets/stylesheets'
+let g:netrw_dirhist_4='/home/tristan/build/rineja/app/assets'
+let g:netrw_dirhist_5='/home/tristan/build/rineja/app'
+let g:netrw_dirhist_6='/home/tristan/build/rineja/app/views'
+let g:netrw_dirhist_7='/home/tristan/build/rineja/app/views/page'
+let g:netrw_dirhist_8='/home/tristan'
+let g:netrw_dirhist_9='/home/tristan/.vim'

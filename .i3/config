@@ -1,0 +1,215 @@
+# T's desktop v3
+#exec --no-startup-id xrandr --output HDMI-0 --auto --mode 1920x1080 --primary --output DVI-I-1 --right-of HDMI-0 --auto --dpi 96/HDMI-0
+exec --no-startup-id mplayer -fs ~/.i3/boot.mp4
+exec --no-startup-id i3lock -f "xos4 Terminus" -F 40 -X 200 -Y 100 -i '~/Pictures/backgrounds/6a171c_5499051.jpg'
+#DAEMONS
+exec --no-startup-id urxvtd -q
+exec --no-startup-id udiskie -f "urxranger" -t
+exec --no-startup-id nitrogen --restore
+#exec --no-startup-id mpd
+#exec --no-startup-id megasync
+exec --no-startup-id parcellite
+exec --no-startup-id dunst
+exec --no-startup-id blueman-applet
+exec --no-startup-id setxkbmap us altgr-intl
+# US brackets on slovene special characters
+#exec xmodmap ~/.i3/custom.map
+
+font pango: FontAwesome, xos4 Terminess Powerline 12
+
+
+#--APPEARANCE--#
+#--T-netbook---#
+#client.focused          #464A55 #464A55 #969AA5 #ffffff
+#client.focused_inactive #272B35 #9b9aa6 #ffffff #48504e
+#client.urgent           #272B35 #900000 #ffffff #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000
+#client.background       #ffffff
+
+#-----T-i3-----#
+#class                 border  backgr. text    indicator
+client.focused          #225396 #15325A #ffffff #2e9ef4
+client.focused_inactive #15325A #032048 #ffffff #484e50
+client.urgent           #2f343a #900000 #ffffff #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000
+client.background       #ffffff
+
+new_window pixel 1
+new_float normal 3
+hide_edge_borders smart
+#//APPEARANCE//#
+
+set $mod Mod4
+set $alt Mod1
+
+#--WINDOW-SETTINGS--#
+floating_modifier $mod
+for_window [class=".*"] title_format "-> %title"
+for_window [class="Pavucontrol"] floating enable
+for_window [class="octopi"] floating enable
+for_window [class="lxappearance"] floating enable
+for_window [title="Hold On*"] floating enable
+for_window [title="florence"] floating enable
+for_window [title="Starting Unity...*"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+assign [title="^ranger$"] → $WS4
+assign [title="^ncmpcpp$"] → $WS5
+assign [class="^URxvt$"] → $WS3
+assign [class="^Firefox$"] → $WS2
+assign [class="^Steam*"] → $WSW2
+assign [class="^Gimp$"] → $WSW4
+#//WINDOW-SETTINGS//#
+
+#--CONTAINERS+WINDOWS--#
+bindsym $mod+Shift+q kill
+bindsym --release button2 kill
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+p focus parent
+bindsym $mod+a layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+x split h
+bindsym $mod+c split v
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+#//CONTAINERS+WINDOWS//#
+
+#--CUSTOM COMMANDS--#
+#KEYBOARD LAYOUT SWITCHING
+bindsym $alt+F3 exec --no-startup-id setxkbmap us altgr-intl
+bindsym $alt+F2 exec --no-startup-id setxkbmap si
+
+#LAUNCH PROGRAM
+bindsym $mod+d exec --no-startup-id rofi -color-enabled -show run -font "Hack 12"
+bindsym $mod+Shift+d exec --no-startup-id j4-dmenu-desktop --dmenu='rofi -dmenu -font "Hack 12" -o 85 -p "Run:"'
+bindsym $alt+Tab exec --no-startup-id rofi -show window -font "Hack 12"
+
+bindsym $mod+t exec urxvtc
+bindsym $mod+w exec firefox
+bindsym $mod+Shift+f exec urxvtc -e ranger ~
+bindsym $mod+m exec urxvtc -e ncmpcpp
+
+#INTEGRATED-SETTINGS
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+bindsym XF86AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc previous
+bindsym XF86AudioMute exec ~/.i3/scripts/volume_set.sh mute
+bindsym XF86AudioRaiseVolume exec ~/.i3/scripts/volume_set.sh up
+bindsym XF86AudioLowerVolume exec ~/.i3/scripts/volume_set.sh down
+bindsym XF86MonBrightnessUp exec xbacklight +5
+bindsym XF86MonBrightnessDown exec xbacklight -5
+bindsym XF86KbdBrightnessUp exec asus-kbd-backlight up
+bindsym XF86KbdBrightnessDown exec asus-kbd-backlight down
+bindsym XF86Sleep exec ~/.i3/scripts/locker.sh & systemctl suspend
+bindsym XF86PowerOff exec ~/.i3/scripts/locker.sh
+
+#SHUTDOWN+RESTART
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+z exec "i3-msg exit"
+bindsym $mod+Shift+e exec ~/.i3/scripts/locker.sh
+#SHUTDOWN MENU
+bindsym $alt+F4 exec --no-startup-id ~/.i3/scripts/shutdown_menu
+
+#//CUSTOM COMMANDS//#
+
+#--WORKSPACES--#
+workspace_auto_back_and_forth yes
+workspace $WS1 output primary
+
+#Primary workspaces
+set $WS1 "1 "
+set $WS2 "2 "
+set $WS3 "3 "
+set $WS4 "4 "
+set $WS5 "5 "
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+
+#Secondary workspaces
+set $WSW1 "W1"
+set $WSW2 "W2"
+set $WSW3 "W3"
+set $WSW4 "W4"
+bindsym $mod+F1 workspace $WSW1
+bindsym $mod+F2 workspace $WSW2
+bindsym $mod+F3 workspace $WSW3
+bindsym $mod+F4 workspace $WSW4
+bindsym $mod+Shift+F1 move container to workspace $WSW1
+bindsym $mod+Shift+F2 move container to workspace $WSW2
+bindsym $mod+Shift+F3 move container to workspace $WSW3
+bindsym $mod+Shift+F4 move container to workspace $WSW4
+
+#Multiple screens
+bindsym $mod+Left move container to output left
+bindsym $mod+Right move container to output right
+bindsym $mod+Shift+Left move workspace to output left
+bindsym $mod+Shift+Right move workspace to output right
+#//WORKSPACES//#
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+mode "ignore" {
+    bindsym $alt+Shift+i mode "default"
+
+}
+
+bindsym $alt+i mode "ignore"
+
+#--BAR CONFIGURATION--#
+bar {
+    tray_output primary
+    #status_command i3blocks -c ~/.i3/i3blocks.conf
+    status_command i3blocks -c ~/.i3/i3blocks-netbook.conf
+
+    mode dock
+    hidden_state show
+    position top
+    # T-i3
+    colors {
+        background #15325A
+        statusline #FFFFFF
+        separator #666666
+        focused_workspace  #225396 #184791 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #aa0000 #990000 #ffffff
+    }
+}
+# vim:filetype=i3
