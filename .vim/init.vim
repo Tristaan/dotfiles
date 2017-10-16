@@ -54,7 +54,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-endwise'
 Plugin 'moll/vim-bbye'
 Plugin 'stevearc/vim-arduino'
-
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'fishbullet/deoplete-ruby'
+Plugin 'Shougo/deoplete-rct'
 "GIT
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -90,7 +92,7 @@ let g:vimfiler_as_default_explorer = 1
 "EMMET
 let g:user_emmet_install_global = 0
 let g:user_emmet_expandabbr_key = '<C-e>'
-
+let g:deoplete#enable_at_startup = 1
 "ARDUINO
 let g:arduino_dir = '/usr/share/arduino'
 "STARTIFY

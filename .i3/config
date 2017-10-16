@@ -1,5 +1,5 @@
 # T's desktop v3
-#exec --no-startup-id xrandr --output HDMI-0 --auto --mode 1920x1080 --primary --output DVI-I-1 --right-of HDMI-0 --auto --dpi 96/HDMI-0
+exec --no-startup-id xrandr --output HDMI-0 --auto --mode 1920x1080 --primary --dpi 96/HDMI-0
 exec --no-startup-id mplayer -fs ~/.i3/boot.mp4
 exec --no-startup-id i3lock -f "xos4 Terminus" -F 40 -X 200 -Y 100 -i '~/Pictures/backgrounds/6a171c_5499051.jpg'
 #DAEMONS
@@ -15,7 +15,7 @@ exec --no-startup-id setxkbmap us altgr-intl
 # US brackets on slovene special characters
 #exec xmodmap ~/.i3/custom.map
 
-font pango: FontAwesome, xos4 Terminess Powerline 12
+font pango: FontAwesome, xos4 Terminess Powerline 10
 
 
 #--APPEARANCE--#
@@ -41,6 +41,7 @@ hide_edge_borders smart
 
 set $mod Mod4
 set $alt Mod1
+set $m  Mod3
 
 #--WINDOW-SETTINGS--#
 floating_modifier $mod
@@ -146,12 +147,22 @@ bindsym $mod+Shift+2 move container to workspace $WS2
 bindsym $mod+Shift+3 move container to workspace $WS3
 bindsym $mod+Shift+4 move container to workspace $WS4
 bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $m+1 workspace $WS1
+bindsym $m+2 workspace $WS2
+bindsym $m+3 workspace $WS3
+bindsym $m+4 workspace $WS4
+bindsym $m+5 workspace $WS5
+bindsym $m+Shift+1 move container to workspace $WS1
+bindsym $m+Shift+2 move container to workspace $WS2
+bindsym $m+Shift+3 move container to workspace $WS3
+bindsym $m+Shift+4 move container to workspace $WS4
+bindsym $m+Shift+5 move container to workspace $WS5
 
 #Secondary workspaces
 set $WSW1 "W1"
 set $WSW2 "W2"
 set $WSW3 "W3"
-set $WSW4 "W4"
+set $WSW4 "W4"
 bindsym $mod+F1 workspace $WSW1
 bindsym $mod+F2 workspace $WSW2
 bindsym $mod+F3 workspace $WSW3
@@ -160,6 +171,14 @@ bindsym $mod+Shift+F1 move container to workspace $WSW1
 bindsym $mod+Shift+F2 move container to workspace $WSW2
 bindsym $mod+Shift+F3 move container to workspace $WSW3
 bindsym $mod+Shift+F4 move container to workspace $WSW4
+bindsym $m+F1 workspace $WSW1
+bindsym $m+F2 workspace $WSW2
+bindsym $m+F3 workspace $WSW3
+bindsym $m+F4 workspace $WSW4
+bindsym $m+Shift+F1 move container to workspace $WSW1
+bindsym $m+Shift+F2 move container to workspace $WSW2
+bindsym $m+Shift+F3 move container to workspace $WSW3
+bindsym $m+Shift+F4 move container to workspace $WSW4
 
 #Multiple screens
 bindsym $mod+Left move container to output left
@@ -195,8 +214,8 @@ bindsym $alt+i mode "ignore"
 #--BAR CONFIGURATION--#
 bar {
     tray_output primary
-    #status_command i3blocks -c ~/.i3/i3blocks.conf
-    status_command i3blocks -c ~/.i3/i3blocks-netbook.conf
+    status_command i3blocks -c ~/.i3/i3blocks.conf
+    #status_command i3blocks -c ~/.i3/i3blocks-netbook.conf
 
     mode dock
     hidden_state show
