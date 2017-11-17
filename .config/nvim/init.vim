@@ -161,6 +161,8 @@ let g:vimfiler_as_default_explorer = 1
 let g:user_emmet_install_global = 0
 let g:user_emmet_expandabbr_key = '<C-e>'
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources = [ 'tag', 'buffer' ]
+let deoplete#tag#cache_limit_size = 5000000
 "
 "POLYGLOT
 "let g:polyglot_disabled = ['css', 'html', 'javascript']
