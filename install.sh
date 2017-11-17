@@ -1,40 +1,39 @@
 #!/bin/bash
-# Dotfiles installer
-realpath() {
-    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
-}
+SCRIPT_DIR=$(readlink -f ${0%/*})
+for var in "$@"
+do
+    if [[ $var == "-u"]]; then
+        sudo pacman -Syyu
+    fi
+    if [[ $var == "-ii"]]; then
+        sudo pacman -S wget
+        wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
+        wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
+        tar -xvf package-query.tar.gz &
+        tar -xvf yaourt.tar.gz
+        cd package-query
+        makepkg -sri
+        cd ../yaourt
+        makepkg -sri
+        cd ..
+        rm package-query* yaourt*
 
-safe_link(){
-    local src="$1"
-    local dest="$HOME/`basename $src`"
-    [ ! -e "$dest" ] && ln -sf "$src" "$dest"
-}
-if [[ $1== 'initialize' ]]; then
-    cd ~/build
-    wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
-    wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
-    tar -xvf yaourt.tar.gz
-    tar -xvf package-query.tar.gz
-    cd package-query
-    makepkg -sri
-    cd ../yaourt
-    makepkg -sri
-    cd ..
-    rm -R yaourt* package-query*
-fi
+        symlink_dotfiles()
 
-# Get root
-SCRIPT_PATH=`realpath $0`
-DOTFILES=`dirname $SCRIPT_PATH`
-
-# Install bin scripts
-safe_link "$DOTFILES/bin"
-
-# Initialize and update submodules (for vim plugins)
-git submodule init
-git submodule update
-
-# Install other dotfiles
-for f in `ls -A $DOTFILES`; do
-    safe_link "$DOTFILES/$f"
+        sudo yaourt -S zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags
+    fi
 done
+function symlink_dotfiles {
+
+    ln -s .i3 $HOME/.i3
+    ln -s .vim $HOME/.config/nvim
+    ln -s .Xresources $HOME/.Xresources
+    ln -s .dmrc $HOME/.dmrc
+    for file in .config/* do
+        ln -s $file "${HOME}${file}"
+    done
+    ln -s .gitconfig $HOME/.gitconfig
+    ln -s .oh-my-zsh $HOME/.oh-my-zsh
+    ln -s .zshrc $HOME/.zshrc
+
+}
