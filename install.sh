@@ -17,15 +17,20 @@ do
         makepkg -sri
         cd ..
         rm package-query* yaourt*
+        sudo yaourt -S zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags
 
         symlink_dotfiles()
 
-        sudo yaourt -S zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags
+    elif [[ $var == "-i" ]]; then
+        sudo yaourt -S megasync zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags
+    fi
+    if [[ $var == "-r" ]]; then
+
     fi
 done
 function symlink_dotfiles {
 
-    ln -s .i3 $HOME/.i3
+    ln -s .i3 $HOME/.config/i3
     ln -s .vim $HOME/.config/nvim
     ln -s .Xresources $HOME/.Xresources
     ln -s .dmrc $HOME/.dmrc

@@ -5,26 +5,36 @@ if has("nvim")
     set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
   set termguicolors
 endif
-set encoding=utf-8
 set t_Co=256
 set t_ut=
+"Encoding settings
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
 
 "Timeout for <esc> and <leader>
-set ttimeoutlen=1000
-set timeoutlen=800
+set ttimeoutlen=100
+set timeoutlen=400
 
 set hidden "Multiple buffers
 set laststatus=2 "Always show status lines
 set number numberwidth=2 " Show line number column
 set relativenumber " Show numbers relative to current position
-set cursorline
+if !&diff
+    set cursorline
+endif
 set autoindent "Automatic indentation of files
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab "Tab Settings
 set nosol
+
+set fileformats=unix,dos,mac
 set showcmd "Show command in status bar
 set showmatch "Show matching brackets
 set noshowmode
+
+"Swap file off
 set noswapfile
+
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
 set incsearch           " Incremental search
 set hlsearch            " Highlight search match
@@ -36,6 +46,54 @@ if has("mouse")
 endif
 set mousehide           " Hide mouse pointer on insert mode."
 
+"MAPPINGS
+set pastetoggle=<F2>
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \. synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \. synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+nnoremap <F5> :Denite buffer<CR>
+nnoremap <F6> :Startify<CR>
+"Mappings to reduce keypresses
+let mapleader=" "
+
+imap jk    <esc>
+
+nnoremap <leader>w <C-w>
+nnoremap <leader>f :<C-u>:VimFilerExplorer<CR>
+nnoremap <leader>l  :bnext<CR>
+nnoremap <leader>h  :bprevious<CR>
+nnoremap <leader>c  :Bdelete<CR>
+nnoremap <leader>r  :make<CR>
+nnoremap <leader>ad  :ArduinoUploadAndSerial<CR>
+nnoremap <leader>as  :ArduinoSerial<CR>
+nnoremap <leader>ab  :ArduinoChooseBoard<CR>
+nnoremap <leader>ap  :ArduinoChoosePort<CR>
+
+nnoremap <Left> :bprev<CR>
+nnoremap <Right> :bnext<CR>
+
+" Set working dir
+nnoremap <leader>. :lcd %:p:h<CR>
+" Session management
+nnoremap <leader>so :OpenSession<Space>
+nnoremap <leader>ss :SaveSession<Space>
+nnoremap <leader>sd :DeleteSession<CR>
+nnoremap <leader>sc :CloseSession<CR>
+
+"Git maps
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gsh :Gpush<CR>
+noremap <Leader>gb :Gblame<CR>
+noremap <Leader>gr :Gremove<CR>
+noremap <Leader>gll :Gpull<CR>
+noremap <Leader>gd :Gvdiff<CR>
+" Split
+noremap <Leader>b :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"Plugins
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -53,10 +111,12 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-endwise'
 Plugin 'moll/vim-bbye'
-Plugin 'stevearc/vim-arduino'
+Plugin 'w0rp/ale'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'fishbullet/deoplete-ruby'
 Plugin 'Shougo/deoplete-rct'
+Plugin 'editorconfig/editorconfig-vim'
+
 "GIT
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -65,6 +125,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rake'
+
+"Javascript
 
 " EMMET - HTML autocompletions
 Plugin 'mattn/emmet-vim'
@@ -86,6 +148,12 @@ syntax enable
 colorscheme smooth
 set omnifunc=syntaxcomplete#Complete
 
+"VIM SESSIONS
+let g:session_directory = "~/.vim/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
+
 "VIMFILER
 let g:vimfiler_as_default_explorer = 1
 
@@ -93,6 +161,10 @@ let g:vimfiler_as_default_explorer = 1
 let g:user_emmet_install_global = 0
 let g:user_emmet_expandabbr_key = '<C-e>'
 let g:deoplete#enable_at_startup = 1
+"
+"POLYGLOT
+"let g:polyglot_disabled = ['css', 'html', 'javascript']
+let g:vue_disable_pre_processors=1
 "ARDUINO
 let g:arduino_dir = '/usr/share/arduino'
 "STARTIFY
@@ -225,41 +297,6 @@ function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
-"MAPPINGS
-set pastetoggle=<F2>
-let mapleader=" "
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-nnoremap <F5> :Denite buffer<CR>
-nnoremap <F6> :Startify<CR>
-"noremap j    h
-"noremap k    j
-"noremap l    k
-"noremap č    l
-"Mappings to reduce keypresses
-nnoremap \ <C-w>
-
-imap jk    <esc>
-imap <tab><tab> <c-x><c-o>
-
-nnoremap <leader>f :<C-u>:VimFilerExplorer<CR>
-nnoremap <leader>l  :bnext<CR>
-nnoremap <leader>h  :bprevious<CR>
-nnoremap <leader>c  :Bdelete<CR>
-nnoremap <leader>r  :make<CR>
-nnoremap <leader>ad  :ArduinoUploadAndSerial<CR>
-nnoremap <leader>as  :ArduinoSerial<CR>
-nnoremap <leader>ab  :ArduinoChooseBoard<CR>
-nnoremap <leader>ap  :ArduinoChoosePort<CR>
-
-nnoremap <Left> :bprev<CR>
-nnoremap <Right> :bnext<CR>
-nnoremap <leader>gp     <Plug>GitGutterPreviewHunk
-nnoremap <leader>gr     <Plug>GitGutterUndoHunk:echomsg ' hr is deprecated. Use  hu'<CR>
-nnoremap <leader>gu     <Plug>GitGutterUndoHunk
-nnoremap <leader>gs     <Plug>GitGutterStageHunk
-
 "OMNICOMPLETE
 "FUNCTIONS
 function! PythonInit()
@@ -278,12 +315,18 @@ augroup END
 augroup filetypes
     au!
     au FileType eruby let b:surround_45 = "<%= \r %>"
-    au FileType html,css,eruby EmmetInstall
+    "au FileType html,css,eruby EmmetInstall
+augroup END
+
+augroup Vuefix
+    au!
+    au BufRead,BufNewFile *.vue setlocal filetype=vue
+    au Filetype vue syntax sync fromstart
 augroup END
 
 augroup newfiles
     au!
     au BufWritePre * %s/\s\+$//e
-    au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+    au BufRead,BufNewFile *.m,*.oct set filetype=octave
     au BufNewFile,BufRead *.py call PythonInit()
 augroup END

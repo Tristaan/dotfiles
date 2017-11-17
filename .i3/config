@@ -1,11 +1,13 @@
 # T's desktop v3
 exec --no-startup-id xrandr --output HDMI-0 --auto --mode 1920x1080 --primary --dpi 96/HDMI-0
 exec --no-startup-id mplayer -fs ~/.i3/boot.mp4
-exec --no-startup-id i3lock -f "xos4 Terminus" -F 40 -X 200 -Y 100 -i '~/Pictures/backgrounds/6a171c_5499051.jpg'
+exec --no-startup-id xautolock -time 10 -locker ~/.i3/scripts/locker.sh
+exec --no-startup-id xautolock -locknow
 #DAEMONS
 exec --no-startup-id urxvtd -q
 exec --no-startup-id udiskie -f "urxranger" -t
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id compton -G -b
 #exec --no-startup-id mpd
 #exec --no-startup-id megasync
 exec --no-startup-id parcellite
