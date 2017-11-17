@@ -1,4 +1,5 @@
 # T's desktop v3
+#exec --no-stratup-id xrandr --output eDP1 --primary --auto
 exec --no-startup-id xrandr --output HDMI-0 --auto --mode 1920x1080 --primary --dpi 96/HDMI-0
 exec --no-startup-id mplayer -fs ~/.i3/boot.mp4
 exec --no-startup-id xautolock -time 10 -locker ~/.i3/scripts/locker.sh
@@ -18,7 +19,7 @@ exec --no-startup-id xmodmap ~/.config/i3/custom.map
 # US brackets on slovene special characters
 #exec xmodmap ~/.i3/custom.map
 
-font pango: FontAwesome, xos4 Terminess Powerline 10
+font pango: FontAwesome, xos4 Terminess Powerline 12
 
 
 #--APPEARANCE--#

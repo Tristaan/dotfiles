@@ -95,7 +95,7 @@ noremap <Leader>v :<C-u>vsplit<CR>
 
 "Plugins
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -133,7 +133,7 @@ Plugin 'mattn/emmet-vim'
 
 "syntax, colorscheme, etc. (visuals)
 Plugin 'itchyny/lightline.vim'
-Plugin 'taohex/lightline-buffer'
+Plugin 'mgee/lightline-bufferline'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'vim-scripts/octave.vim--'
@@ -203,14 +203,14 @@ let g:startify_custom_header = [
 "LIGHTLINE
 let g:lightline = {
             \ 'tabline': {
-            \ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
-            \ 'right': [ [ 'close' ], ],
+            \ 'left': [[ 'buffers' ]],
+            \ 'right': [[ 'close' ]],
             \ },
             \ 'component_expand': {
-            \ 'buffercurrent': 'lightline#buffer#buffercurrent2',
+            \ 'buffers': 'lightline#bufferline#buffers',
             \ },
             \ 'component_type': {
-            \ 'buffercurrent': 'tabsel',
+            \ 'buffers': 'tabsel',
             \ },
             \ 'mode_map': { 'c': 'NORMAL' },
             \ 'active': {

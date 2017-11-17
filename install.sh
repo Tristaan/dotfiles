@@ -16,8 +16,10 @@ symlink_dotfiles() {
     for file in .config/*; do
         ln -s "${SCRIPT_DIR}/${file}" "${HOME}/${file}"
     done
+    ln -s "${SCRIPT_DIR}/zsh-themes" "${HOME}/.oh-my-zsh/custom/themes"
 
 }
+git submodule update
 for var in "$@"
 do
     if [ $var == "-u" ] ; then
