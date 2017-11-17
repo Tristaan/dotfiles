@@ -24,7 +24,8 @@ do
     elif [[ $var == "-i" ]]; then
         sudo yaourt -S megasync zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags
     fi
-    if [[ $var == "-r" ]]; then
+    if [[ $var == "-l" ]]; then
+        symlink_dotfiles()
 
     fi
 done
