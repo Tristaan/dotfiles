@@ -1,6 +1,6 @@
 # T's desktop v3
-#exec --no-stratup-id xrandr --output eDP1 --primary --auto
-exec --no-startup-id xrandr --output HDMI-0 --auto --mode 1920x1080 --primary --dpi 96/HDMI-0
+exec --no-stratup-id xrandr --output eDP1 --primary --auto
+#exec --no-startup-id xrandr --output HDMI-0 --auto --mode 1920x1080 --primary --dpi 96/HDMI-0
 exec --no-startup-id mplayer -fs ~/.i3/boot.mp4
 exec --no-startup-id xautolock -time 10 -locker ~/.i3/scripts/locker.sh
 exec --no-startup-id xautolock -locknow
@@ -218,8 +218,8 @@ bindsym $alt+i mode "ignore"
 #--BAR CONFIGURATION--#
 bar {
     tray_output primary
-    status_command i3blocks -c ~/.i3/i3blocks.conf
-    #status_command i3blocks -c ~/.i3/i3blocks-netbook.conf
+    #status_command i3blocks -c ~/.i3/i3blocks.conf
+    status_command i3blocks -c ~/.i3/i3blocks-netbook.conf
 
     mode dock
     hidden_state show
