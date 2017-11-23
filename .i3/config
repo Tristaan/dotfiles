@@ -2,6 +2,7 @@
 #exec --no-stratup-id xrandr --output eDP1 --primary --auto
 exec --no-startup-id xrandr --output HDMI-0 --auto --mode 1920x1080 --primary --dpi 96/HDMI-0
 exec --no-startup-id mplayer -fs ~/.i3/boot.mp4
+exec --no-startup-id xset -dpms && xset s noblank && xset s noexpose && xset dpms 600 1800 360
 exec --no-startup-id xautolock -time 10 -locker ~/.i3/scripts/locker.sh
 exec --no-startup-id xautolock -locknow
 #DAEMONS
@@ -54,6 +55,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="octopi"] floating enable
 for_window [class="lxappearance"] floating enable
 for_window [title="Hold On*"] floating enable
+for_window [title="Zazu*"] floating enable
 for_window [title="florence"] floating enable
 for_window [title="Starting Unity...*"] floating enable
 for_window [window_role="pop-up"] floating enable
