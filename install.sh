@@ -38,7 +38,7 @@ do
         makepkg -sri
         cd ..
         rm package-query* yaourt*
-        sudo yaourt -S zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags
+        sudo yaourt -S zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags alacritty-scrollback-git
         symlink_dotfiles
     fi
 

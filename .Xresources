@@ -9,7 +9,6 @@ URxvt.geometry: 100x25
 URxvt.fading: 30%
 URxvt.allow_bold: true
 URxvt.internalBorder: 3
-URxvt.letterSpace:0
 URxvt*perl-lib:         /usr/lib/urxvt/perl/
 URxvt*perl-ext-common:  default,matcher,font-size
 URxvt*url-launcher:     /usr/bin/firefox
@@ -22,6 +21,7 @@ URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-equal:  font-size:reset
 URxvt.keysym.C-slash:  font-size:show
 ! Xft Settings (font)
+URxvt.letterSpace: 0
 Xft.lcdfilter: lcddefault
 Xft.antialias: true
 Xft.rgba:rgba

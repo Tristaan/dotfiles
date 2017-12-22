@@ -1,4 +1,6 @@
 clear mod4
-keycode 49 = Hyper_L asciitilde Hyper_L asciitilde dead_grave dead_tilde dead_grave
+clear mod3
+keycode 94 = Hyper_L Hyper_L Hyper_L Hyper_L Hyper_L Hyper_L Hyper_L
+keycode 135 = Super_R Super_R Super_R Super_R Super_R Super_R Super_R
 add        mod3 = Hyper_L
 add        mod4 = Super_L Super_R

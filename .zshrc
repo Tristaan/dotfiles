@@ -1,7 +1,6 @@
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/tristan/.oh-my-zsh
-  export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
   export PATH=$HOME/.gem/ruby/2.4.0/bin/:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -33,11 +32,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # export LANG=en_US.UTF-8
 
  #Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nvim'
- else
-   export EDITOR='nvim'
- fi
+ export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -54,3 +49,5 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ccat="source-highlight --out-format=esc -i"
+alias lal="ls -la"
+alias lh="ls -lh"
