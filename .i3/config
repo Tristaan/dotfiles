@@ -7,7 +7,6 @@ exec --no-startup-id xautolock -time 10 -locker ~/.i3/scripts/locker.sh
 exec --no-startup-id xautolock -locknow
 #DAEMONS
 #exec --no-startup-id urxvtd -q
-exec --no-startup-id tracker daemon -s
 exec --no-startup-id udiskie -t
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton -G -b
@@ -15,6 +14,7 @@ exec --no-startup-id dunst
 #exec --no-startup-id mpd
 exec --no-startup-id megasync
 exec --no-startup-id parcellite
+exec --no-startup-id dunst
 exec --no-startup-id blueman-applet
 #Layout
 exec setxkbmap us altgr-intl
@@ -224,8 +224,8 @@ bindsym $alt+i mode "ignore"
 #--BAR CONFIGURATION--#
 bar {
     tray_output primary
-    status_command i3blocks -c ~/.i3/i3blocks.conf
-    #status_command i3blocks -c ~/.i3/i3blocks-netbook.conf
+    #status_command i3blocks -c ~/.i3/i3blocks.conf
+    status_command i3blocks -c ~/.i3/i3blocks-netbook.conf
 
     mode dock
     hidden_state show

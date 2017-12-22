@@ -109,6 +109,8 @@ Plugin 'VundleVim/Vundle.vim'
 "Interfaces
 Plugin 'Shougo/unite.vim'
 Plugin 'mhinz/vim-startify'
+"Arduino
+Plugin 'z3t0/arduvim'
 
 "Utilities
 Plugin 'Shougo/vimfiler.vim'
