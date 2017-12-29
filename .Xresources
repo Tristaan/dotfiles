@@ -28,8 +28,8 @@ Xft.rgba:rgba
 Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.dpi: 92
-*font:        xft:xos4 Terminess Powerline:style=Regular:pixelsize=18,xft:TerminessTTF Nerd Font:pixelsize=20:style=Medium
-*boldFont:    xft:xos4 Terminess Powerline:style=Bold:pixelsize=18,xft:TerminessTTF Nerd Font:pixelsize=20:style=Bold
+URxvt*font:        xft:xos4 Terminess Powerline:style=Regular:pixelsize=18,xft:TerminessTTF Nerd Font:pixelsize=20:style=Medium
+URxvt*boldFont:    xft:xos4 Terminess Powerline:style=Bold:pixelsize=18,xft:TerminessTTF Nerd Font:pixelsize=20:style=Bold
 xterm*faceName: Terminess Powerline:pixelsize=14:style=Regular
 ! special
 urxvt.foreground:   #c1c4c2
