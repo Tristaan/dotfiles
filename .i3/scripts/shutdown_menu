@@ -16,8 +16,8 @@ menu=(
   [Hibernate]="systemctl hibernate"
   [Suspend]="systemctl suspend"
   [Halt]="systemctl halt"
-  [Lock]="i3lock --color=${BG_COLOR}"
-  [Logout]="i3-msg exit"
+  [Lock]="~/.i3/scripts/locker.sh"
+  [Logout]="exit"
   [Cancel]="Cancel"
 )
 
