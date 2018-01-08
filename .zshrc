@@ -51,3 +51,4 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 alias ccat="source-highlight --out-format=esc -i"
 alias lal="ls -la"
 alias lh="ls -lh"
+alias ip="ip -c"
