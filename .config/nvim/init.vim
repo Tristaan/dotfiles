@@ -114,10 +114,12 @@ Plugin 'z3t0/arduvim'
 
 "Utilities
 Plugin 'Shougo/vimfiler.vim'
+Plugin 'wellle/targets.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-endwise'
+Plugin 'alvan/vim-closetag'
 Plugin 'moll/vim-bbye'
 Plugin 'w0rp/ale'
 Plugin 'Shougo/deoplete.nvim'
@@ -140,6 +142,7 @@ Plugin 'tpope/vim-rake'
 Plugin 'mattn/emmet-vim'
 
 "syntax, colorscheme, etc. (visuals)
+Plugin 'chrisbra/Colorizer'
 Plugin 'itchyny/lightline.vim'
 Plugin 'mgee/lightline-bufferline'
 Plugin 'ryanoasis/vim-devicons'
@@ -173,8 +176,8 @@ let g:deoplete#sources = [ 'tag', 'buffer' ]
 let deoplete#tag#cache_limit_size = 5000000
 "
 "POLYGLOT
-"let g:polyglot_disabled = ['css', 'html', 'javascript']
-let g:vue_disable_pre_processors=1
+let g:polyglot_disabled = ['css', 'html', 'javascript']
+let g:vue_disable_pre_processors=0
 "ARDUINO
 let g:arduino_dir = '/usr/share/arduino'
 "STARTIFY
