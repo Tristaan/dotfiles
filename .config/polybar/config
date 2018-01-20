@@ -62,7 +62,7 @@ font-1 = FontAwesome:pixelsize=16;1
 
 modules-left = i3
 modules-center = xwindow
-modules-right = network filesystem volume battery xkeyboard cpu memory date powermenu
+modules-right = filesystem network volume battery xkeyboard cpu memory date powermenu
 
 tray-position = right
 tray-padding = 2

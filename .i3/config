@@ -2,6 +2,7 @@
 #exec --no-stratup-id xrandr --output eDP1 --primary --auto
 exec --no-startup-id xrandr --output HDMI-0 --auto --mode 2048x1152 --primary
 exec_always --no-startup-id $HOME/.i3/scripts/polybar_launch.sh
+exec_always --no-startup-id compton -G -b --config $HOME/.config/compton/compton.conf
 exec --no-startup-id mplayer -fs ~/.i3/boot.mp4
 exec --no-startup-id xset -dpms && xset s noblank && xset s noexpose && xset dpms 600 1800 360
 exec --no-startup-id xautolock -time 10 -locker ~/.i3/scripts/locker.sh
@@ -10,7 +11,6 @@ exec --no-startup-id xautolock -locknow
 #exec --no-startup-id urxvtd -q
 exec --no-startup-id udiskie -t
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton -G -b
 exec --no-startup-id dunst
 #exec --no-startup-id mpd
 exec --no-startup-id megasync
@@ -42,7 +42,7 @@ client.urgent           #2f343a #900000 #ffffff #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #ffffff
 
-new_window pixel 1
+new_window pixel 2
 new_float normal 3
 hide_edge_borders smart
 #//APPEARANCE//#
@@ -91,6 +91,7 @@ bindsym $mod+Shift+l move right
 bindsym $mod+p focus parent
 bindsym $mod+a layout toggle split
 bindsym $mod+s layout stacking
+bindsym $mod+v layout tabbed
 bindsym $mod+x split h
 bindsym $mod+c split v
 
@@ -191,6 +192,11 @@ bindsym $m+Shift+F2 move container to workspace $WSW2
 bindsym $m+Shift+F3 move container to workspace $WSW3
 bindsym $m+Shift+F4 move container to workspace $WSW4
 
+#GAPS
+gaps inner 5
+gaps outer 2
+workspace $ws2 gaps outer 0
+workspace $ws2 gaps inner 0
 #Multiple screens
 bindsym $mod+Left move container to output left
 bindsym $mod+Right move container to output right

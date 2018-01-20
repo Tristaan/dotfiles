@@ -1,16 +1,24 @@
 [user]
-	name = Tristaan
-	email = tristan.sneider@gmail.com
+    name = Tristaan
+    email = tristan.sneider@gmail.com
 
 [diff]
-	tool = nvimdiff
+    tool = nvimdiff
 [difftool]
-  prompt = true
+    prompt = true
 [difftool "nvimdiff"]
-  cmd = "nvim -d $LOCAL $REMOTE"
+    cmd = "nvim -d $LOCAL $REMOTE"
 [merge]
-  tool = nvimdiff
+    tool = nvimdiff
 [mergetool]
-  prompt = true
+    prompt = true
 [mergetool "nvimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+    cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[alias]
+    ch = checkout
+    co = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
