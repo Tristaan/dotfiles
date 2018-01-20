@@ -1,7 +1,8 @@
 #!/bin/sh
 ARGS=(
     "--clock" "-s"
-    "-i${HOME}/Pictures/bg_1440p/Linux-Wallpapers-19-2560-x-1920.png"
+#    "-i${HOME}/Pictures/bg_1440p/Linux-Wallpapers-19-2560-x-1920.png"
+    "-i${HOME}/Pictures/backgrounds/0c7e1f_5775038.jpg"
     "--insidevercolor=35d75588"
     "--insidewrongcolor=d7355588"
     "--insidecolor=50505000"

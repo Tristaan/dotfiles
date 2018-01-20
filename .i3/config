@@ -23,7 +23,7 @@ exec xmodmap ~/.i3/custom.map
 # US brackets on slovene special characters
 #exec xmodmap ~/.i3/custom.map
 
-font pango: FontAwesome, xos4 Terminess Powerline 12
+font pango: FontAwesome, xos4 Terminus 12
 
 
 #--APPEARANCE--#

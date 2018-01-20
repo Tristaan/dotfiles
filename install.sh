@@ -40,7 +40,7 @@ do
     fi
 
     if [ $var == "-ii" ]; then
-        yaourt -S zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags alacritty-scrollback-git polybar mplayer udiskie nitrogen compton dunst megasync parcellite rofi terminus terminess-powerline-font-git ttf-font-awesome-4 openssh arc-gtk-theme lxappearance numix-circle-arc-icons-git pulsemixer
+        yaourt -S zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags alacritty-scrollback-git polybar mplayer udiskie nitrogen compton dunst megasync parcellite rofi terminus terminess-powerline-font-git ttf-font-awesome-4 openssh arc-gtk-theme lxappearance numix-circle-arc-icons-git pulsemixer xsel
         symlink_dotfiles
     fi
 
