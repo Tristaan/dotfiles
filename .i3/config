@@ -2,8 +2,9 @@
 #exec --no-stratup-id xrandr --output eDP1 --primary --auto
 exec --no-startup-id xrandr --output HDMI-0 --auto --mode 2048x1152 --primary
 exec_always --no-startup-id $HOME/.i3/scripts/polybar_launch.sh
-exec_always --no-startup-id compton -G -b --config $HOME/.config/compton/compton.conf
+exec_always --no-startup-id compton -G -b
 exec --no-startup-id mplayer -fs ~/.i3/boot.mp4
+exec --no-startup-id conky -c $HOME/.config/conky/conkyrc
 exec --no-startup-id xset -dpms && xset s noblank && xset s noexpose && xset dpms 600 1800 360
 exec --no-startup-id xautolock -time 10 -locker ~/.i3/scripts/locker.sh
 exec --no-startup-id xautolock -locknow

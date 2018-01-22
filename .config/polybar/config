@@ -181,9 +181,8 @@ interval = 1.0
 
 udspeed-minwidth = 5
 accumulate-stats = true
-
-format-connected = <ramp-signal> <label-connected>
-format-disconnected = <label-disconnected>
+format-connected = %{A:networkmanager_dmenu&:}<ramp-signal> <label-connected>%{A}
+format-disconnected = %{A:networkmanager_dmenu&:}<label-disconnected>%{A}
 format-packetloss = <animation-packetloss> <label-connected>
 
 label-connected = %essid%
@@ -204,6 +203,7 @@ animation-packetloss-1 = 
 animation-packetloss-1-foreground = ${colors.black}
 ; Framerate in milliseconds
 animation-packetloss-framerate = 500
+
 [module/battery]
 type = internal/battery
 full-at = 99
