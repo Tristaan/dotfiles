@@ -171,10 +171,10 @@ bindsym $m+Shift+4 move container to workspace $WS4
 bindsym $m+Shift+5 move container to workspace $WS5
 
 #Secondary workspaces
-set $WSW1 "W1:"
-set $WSW2 "W2:"
-set $WSW3 "W3:"
-set $WSW4 "W4:"
+set $WSW1 "6:"
+set $WSW2 "7:"
+set $WSW3 "8:"
+set $WSW4 "9:"
 bindsym $mod+F1 workspace $WSW1
 bindsym $mod+F2 workspace $WSW2
 bindsym $mod+F3 workspace $WSW3
