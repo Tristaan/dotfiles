@@ -217,7 +217,7 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <animation-packetloss> <label-connected>
 
-label-connected = %local_ip%%downspeed:9%
+label-connected = %local_ip%%downspeed:1:4%
 label-connected-foreground = ${colors.green}
 label-disconnected = %ifname%
 label-disconnected-foreground = ${colors.bright_red}

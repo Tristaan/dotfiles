@@ -1,8 +1,6 @@
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/tristan/.oh-my-zsh
-  export PATH=$HOME/.gem/ruby/2.4.0/bin/:$PATH
-  export PATH=$HOME/.gem/ruby/2.5.0/bin/:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -20,12 +18,6 @@ plugins=(archlinux zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-export RUBY_GC_HEAP_INIT_SLOTS=800000
-export RUBY_HEAP_FREE_MIN=100000
-export RUBY_HEAP_SLOTS_INCREMENT=300000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=79000000
 # export MANPATH="/usr/local/man:$MANPATH"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
@@ -55,3 +47,7 @@ alias lh="ls -lh"
 alias ip="ip -c"
 alias be="bundle exec"
 alias ber="bundle exec rails"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$HOME/.rvm/bin:$PATH"
+export PATH="$HOME/.rvm/wrappers/jruby-9.1.15.0@global:$PATH"
