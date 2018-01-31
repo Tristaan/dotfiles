@@ -1,17 +1,17 @@
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/tristan/.oh-my-zsh
+export ZSH=/home/tristan/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 hostname=$(</etc/hostname)
 if [[ "$hostname" == "T-i3" ]]; then
-  ZSH_THEME="T-i3"
+    ZSH_THEME="T-i3"
 elif [[ "$hostname" == "TServer" ]]; then
-  ZSH_THEME="TServer"
+    ZSH_THEME="TServer"
 else
-  ZSH_THEME="T-netbook"
+    ZSH_THEME="T-netbook"
 fi
 
 plugins=(archlinux zsh-autosuggestions)
@@ -24,8 +24,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
- #Preferred editor for local and remote sessions
- export EDITOR='nvim'
+#Preferred editor for local and remote sessions
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -50,4 +50,5 @@ alias ber="bundle exec rails"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
-export PATH="$HOME/.rvm/wrappers/jruby-9.1.15.0@global:$PATH"
+#export PATH="$HOME/.rvm/wrappers/jruby-9.1.15.0@global:$PATH"
+source $HOME/.rvm/scripts/rvm
