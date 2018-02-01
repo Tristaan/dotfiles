@@ -18,6 +18,12 @@ plugins=(archlinux zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+export RUBY_GC_HEAP_INIT_SLOTS=800000
+export RUBY_HEAP_FREE_MIN=100000
+export RUBY_HEAP_SLOTS_INCREMENT=300000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=79000000
+
 # export MANPATH="/usr/local/man:$MANPATH"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
@@ -50,5 +56,5 @@ alias ber="bundle exec rails"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
-#export PATH="$HOME/.rvm/wrappers/jruby-9.1.15.0@global:$PATH"
+
 source $HOME/.rvm/scripts/rvm
