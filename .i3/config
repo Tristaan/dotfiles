@@ -34,7 +34,7 @@ font pango: xos4 Terminus, Font Awesome 5 Free, Font Awesome 5 Brands 12
 
 #-----T-i3-----#
 #class                 border  backgr. text    indicator
-client.focused          #225396 #15325A #ffffff #2e9ef4
+client.focused          #225396 #7592bA #ffffff #2e9ef4
 client.focused_inactive #15325A #032048 #ffffff #484e50
 client.urgent           #2f343a #900000 #ffffff #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000

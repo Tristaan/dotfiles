@@ -14,7 +14,7 @@ else
     ZSH_THEME="T-netbook"
 fi
 
-plugins=(archlinux zsh-autosuggestions)
+plugins=(git git-extras ruby capistrano bundler archlinux zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -53,6 +53,7 @@ alias lh="ls -lh"
 alias ip="ip -c"
 alias be="bundle exec"
 alias ber="bundle exec rails"
+alias ssc="sudo systemctl"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$HOME/.rvm/bin:$PATH"
