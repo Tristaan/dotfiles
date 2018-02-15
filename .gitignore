@@ -1,4 +1,5 @@
 .config/ranger/__pycache__
 .config/ranger/plugins/__pycache__
+.config/ranger/bookmarks
 .config/systemd/user/default.target.wants
 .config/systemd/user/timers.target.wants
