@@ -6,6 +6,7 @@ exec --no-startup-id compton -G -b
 exec --no-startup-id mplayer -fs $HOME/.i3/boot.mp4
 exec --no-startup-id conky -c $HOME/.config/conky/conkyrc
 exec --no-startup-id xset -dpms && xset s noblank && xset s noexpose && xset dpms 600 1800 360
+exec --no-startup-id synclient TapButton1=1
 exec xautolock -time 10 -locker $HOME/.i3/scripts/locker.sh
 exec xautolock -locknow
 #DAEMONS
@@ -94,6 +95,8 @@ bindsym $mod+s layout stacking
 bindsym $mod+v layout tabbed
 bindsym $mod+x split h
 bindsym $mod+c split v
+
+bindsym $mod+u border pixel 4
 
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle

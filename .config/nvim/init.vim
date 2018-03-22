@@ -126,6 +126,7 @@ Plugin 'Shougo/deoplete.nvim'
 Plugin 'fishbullet/deoplete-ruby'
 Plugin 'Shougo/deoplete-rct'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'vim-latex/vim-latex'
 
 "GIT
 Plugin 'tpope/vim-fugitive'
@@ -174,12 +175,20 @@ let g:user_emmet_expandabbr_key = '<C-e>'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources = [ 'tag', 'buffer' ]
 let deoplete#tag#cache_limit_size = 5000000
-"
+
+"LATEX
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_ViewRule_pdf='firefox'
+set iskeyword+=:
+
 "POLYGLOT
 let g:polyglot_disabled = ['css', 'html', 'javascript']
 let g:vue_disable_pre_processors=0
+
 "ARDUINO
 let g:arduino_dir = '/usr/share/arduino'
+
 "STARTIFY
 let g:startify_list_order = [
             \ ['   Most recently used in directory:'],
