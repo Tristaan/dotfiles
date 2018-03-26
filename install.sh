@@ -34,6 +34,7 @@ do
         makepkg -sri
         cd ..
         rm -r trizen*
+        sudo firecfg
     fi
 
     # Install packages from the AUR
