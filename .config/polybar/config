@@ -135,7 +135,6 @@ format-unmounted = <label-unmounted>
 
 mount-0 = /
 mount-1 = /media
-mount-2 = /home
 
 label-mounted = %{F#55b7b7}%mountpoint%%{F-}: %free%
 label-unmounted = %mountpoint%

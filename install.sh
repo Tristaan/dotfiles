@@ -19,32 +19,30 @@ symlink_dotfiles() {
     [ ! -e "$dest" ] && ln -fs "${SCRIPT_DIR}/zsh-themes" "${HOME}/.oh-my-zsh/custom/themes"
 
 }
-git submodule update
 for var in "$@"
 do
     if [ $var == "-u" ] ; then
         sudo pacman -Syyu
     fi
 
-    if [ $var == "-y" ] ; then
-        sudo pacman -S wget
-        wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
-        wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
-        tar -xvf package-query.tar.gz & tar -xvf yaourt.tar.gz
-        cd package-query
-        makepkg -sri
-        cd ../yaourt
+    # Install already build packages
+    if [ $var == "-t" ] ; then
+        sudo pacman -S zsh zsh-syntax-highlighting neovim i3-gaps ctags mplayer udiskie nitrogen compton dunst rofi terminus-font openssh lxappearance xsel conky firejail linux-hardened wget ttf-font-awesome
+        wget https://aur.archlinux.org/cgit/aur.git/snapshot/trizen.tar.gz
+        tar -xvf trizen.tar.gz
+        cd trizen
         makepkg -sri
         cd ..
-        rm -r package-query* yaourt*
+        rm -r trizen*
     fi
 
+    # Install packages from the AUR
     if [ $var == "-ii" ]; then
-        yaourt -S zsh zsh-syntax-highlighting i3blocks neovim i3-wm i3lock-color-git ctags alacritty-scrollback-git polybar mplayer udiskie nitrogen compton dunst megasync parcellite rofi terminus terminess-powerline-font-git ttf-font-awesome-4 openssh arc-gtk-theme lxappearance numix-circle-arc-icons-git pulsemixer xsel conky
-        symlink_dotfiles
+        trizen -S polybar megasync alacritty-scrollback-git i3lock-color-git terminess-powerline-font-git arc-gtk-theme numix-circle-arc-icons-git pulsemixer
     fi
 
     if [ $var == "-l" ]; then
+        git submodule init && git submodule update
         symlink_dotfiles
 
     fi
