@@ -1,5 +1,13 @@
 #!/bin/bash
-SCRIPT_DIR=$(readlink -f ${0%/*})
+UNAME="$(uname -s)"
+case "${UNAME}" in
+    Linux*)     SCRIPT_DIR=$(readlink -f ${0%/*});;
+    Darwin*)    SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd);;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          SCRIPT_DIR=$(readlink -f ${0%/*});;
+esac
+
 safe_link(){
     local src="$1"
     local dest="$HOME/`basename $src`"

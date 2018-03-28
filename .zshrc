@@ -1,11 +1,19 @@
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/tristan/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
+
+UNAME="$(uname -s)"
+case "${UNAME}" in
+    Linux*)     hostname=$(</etc/hostname);;
+    Darwin*)    hostname=$(hostname);;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          hostname=$(</etc/hostname);;
+esac
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-hostname=$(</etc/hostname)
 if [[ "$hostname" == "T-i3" ]]; then
     ZSH_THEME="T-i3"
 elif [[ "$hostname" == "TServer" ]]; then
