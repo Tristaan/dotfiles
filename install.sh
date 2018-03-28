@@ -1,8 +1,8 @@
 #!/bin/bash
 UNAME="$(uname -s)"
 case "${UNAME}" in
-    Linux*)     SCRIPT_DIR=$(readlink -f ${0%/*});;
-    Darwin*)    SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd);;
+    Linux*)     machine=Linux SCRIPT_DIR=$(readlink -f ${0%/*});;
+    Darwin*)    machine=Darwin SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd);;
     CYGWIN*)    machine=Cygwin;;
     MINGW*)     machine=MinGw;;
     *)          SCRIPT_DIR=$(readlink -f ${0%/*});;
@@ -15,9 +15,14 @@ safe_link(){
 }
 symlink_dotfiles() {
 
-    safe_link "$SCRIPT_DIR/.i3"
-    safe_link "$SCRIPT_DIR/.Xresources"
-    safe_link "$SCRIPT_DIR/.dmrc"
+    if [[ $machine == 'Linux' ]]
+        safe_link "$SCRIPT_DIR/.i3"
+        safe_link "$SCRIPT_DIR/.Xresources"
+        safe_link "$SCRIPT_DIR/.dmrc"
+    elif [[ $machine == 'Darwin' ]]
+        safe_link "$SCRIPT_DIR/.skhdrc"
+        safe_link "$SCRIPT_DIR/.chunkwmrc"
+    fi
     safe_link "$SCRIPT_DIR/.gitconfig"
     safe_link "$SCRIPT_DIR/.oh-my-zsh"
     safe_link "$SCRIPT_DIR/.zshrc"
