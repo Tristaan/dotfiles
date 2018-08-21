@@ -34,6 +34,7 @@ xterm*faceName: Terminess Powerline:pixelsize=14:style=Regular
 ! special
 urxvt.foreground:   #c1c4c2
 urxvt.background:   #1d1f21
+xterm.background:   #1d1f21
 urxvt.cursorColor:  #d2c5bc
 ! black
 URxvt*color0:       #1d1f21

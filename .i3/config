@@ -214,8 +214,7 @@ bindsym $mod+Shift+Down move workspace to output down
 #//WORKSPACES//#
 
 #--LAYOUTS--#
-bindsym $alt+Shift+l exec i3-msg "append_layout $HOME/.i3/layouts/workspace-3.json" && bash $HOME/.i3/scripts/term_runner.sh -d $HOME/build/doc24_backend -d $HOME/build/doc24_backend -d $HOME/build/doc24_backend -d $HOME
-
+bindsym $alt+Shift+l exec $HOME/.i3/scripts/workspace.sh "$HOME/.i3/layouts/workspace-3.json" "$HOME/build/doc24_backend"
 #//LAYOUTS//#
 
 # resize window (you can also use the mouse for that)

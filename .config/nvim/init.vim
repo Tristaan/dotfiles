@@ -3,7 +3,12 @@ set shell=$SHELL
 if has("nvim")
     set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
     set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
-  set termguicolors
+    set termguicolors
+endif
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 set t_Co=256
 set t_ut=
@@ -18,8 +23,8 @@ set timeoutlen=400
 
 set hidden "Multiple buffers
 set laststatus=2 "Always show status lines
-set number numberwidth=2 " Show line number column
-set relativenumber " Show numbers relative to current position
+set number numberwidth=1 " Show line number column
+" set relativenumber " Show numbers relative to current position
 if !&diff
     set cursorline
 endif
@@ -31,9 +36,13 @@ set fileformats=unix,dos,mac
 set showcmd "Show command in status bar
 set showmatch "Show matching brackets
 set noshowmode
+set lazyredraw "Put redrawing into buffer
 
 "Swap file off
 set noswapfile
+
+"Tags
+set tags=./tags;
 
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif
 set incsearch           " Incremental search
@@ -101,58 +110,61 @@ noremap <Leader>v :<C-u>vsplit<CR>
 
 "Plugins
 filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.config/nvim/bundle')
 
 "Interfaces
-Plugin 'Shougo/unite.vim'
-Plugin 'mhinz/vim-startify'
+Plug 'Shougo/unite.vim'
+Plug 'mhinz/vim-startify'
+Plug 'git-time-metric/gtm-vim-plugin'
 "Arduino
-Plugin 'z3t0/arduvim'
+Plug 'z3t0/arduvim'
 
 "Utilities
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'wellle/targets.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-endwise'
-Plugin 'alvan/vim-closetag'
-Plugin 'moll/vim-bbye'
-Plugin 'w0rp/ale'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'fishbullet/deoplete-ruby'
-Plugin 'Shougo/deoplete-rct'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'vim-latex/vim-latex'
+Plug 'Shougo/vimfiler.vim'
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
+Plug 'alvan/vim-closetag'
+Plug 'moll/vim-bbye'
+Plug 'w0rp/ale'
+Plug 'Shougo/deoplete.nvim'
+Plug 'fishbullet/deoplete-ruby'
+Plug 'Shougo/deoplete-rct'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-latex/vim-latex'
+Plug 'noahfrederick/vim-laravel'
 
 "GIT
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 "Ruby and rails
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rake'
+Plug 'tpope/vim-rails'
 
 "Javascript
 
 " EMMET - HTML autocompletions
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 "syntax, colorscheme, etc. (visuals)
-Plugin 'chrisbra/Colorizer'
-Plugin 'itchyny/lightline.vim'
-Plugin 'mgee/lightline-bufferline'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'vim-scripts/octave.vim--'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'tristaan/vim-smooth'
-Plugin 'vivien/vim-linux-coding-style'
-call vundle#end()
+Plug 'chrisbra/Colorizer'
+Plug 'itchyny/lightline.vim'
+Plug 'mgee/lightline-bufferline'
+Plug 'ryanoasis/vim-devicons'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'vim-scripts/octave.vim--'
+Plug 'sheerun/vim-polyglot'
+Plug 'tristaan/vim-smooth'
+Plug 'vivien/vim-linux-coding-style'
+call plug#end()
+
+"PYTHON
+let g:python_host_prog  = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/bin/python3'
+
+"RUBY
+let g:ruby_path = system('rvm current')
 
 "SYNTAX COLORING AND COMPLETION
 filetype plugin indent on
@@ -166,6 +178,9 @@ let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
 
+"GTM
+let g:gtm_plugin_status_enabled = 1
+
 "VIMFILER
 let g:vimfiler_as_default_explorer = 1
 
@@ -173,13 +188,14 @@ let g:vimfiler_as_default_explorer = 1
 let g:user_emmet_install_global = 0
 let g:user_emmet_expandabbr_key = '<C-e>'
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources = [ 'tag', 'buffer' ]
+" let g:deoplete#sources = [ 'tag', 'buffer' ]
 let deoplete#tag#cache_limit_size = 5000000
 
 "LATEX
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='firefox'
+let g:Tex_CompileRule_pdf='pdflatex -shell-escape'
 set iskeyword+=:
 
 "POLYGLOT
@@ -188,6 +204,14 @@ let g:vue_disable_pre_processors=0
 
 "ARDUINO
 let g:arduino_dir = '/usr/share/arduino'
+
+"ALE
+let g:ale_linters = {
+\   'c': ['clang']
+\}
+let g:ale_c_clang_options = '-std=gnu11 -Wall -Wextra -Werror -lusb-1.0 -fexceptions -DNDEBUG'
+set statusline+=%{ALEGetStatusLine()}
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 "STARTIFY
 let g:startify_list_order = [
@@ -337,7 +361,7 @@ augroup END
 augroup filetypes
     au!
     au FileType eruby let b:surround_45 = "<%= \r %>"
-    "au FileType html,css,eruby EmmetInstall
+    au FileType html,css,eruby,php EmmetInstall
 augroup END
 
 augroup Vuefix

@@ -1,14 +1,15 @@
+// vim:ts=4:sw=4:et
 {
-    // stacked split container with 1 children
+    // stacked split container with 2 children
     "border": "pixel",
     "floating": "auto_off",
     "layout": "stacked",
-    "percent": 0.6,
+    "percent": 0.7,
     "type": "con",
     "nodes": [
         {
-            "border": "pixel",
-            "current_border_width": 2,
+            "border": "none",
+            "current_border_width": 4,
             "floating": "auto_off",
             "geometry": {
                "height": 768,
@@ -16,12 +17,32 @@
                "x": 0,
                "y": 0
             },
-            "name": "tristan@T-i3: ~/build",
-            "percent": 1,
+            "name": "tristan@T-i3: ~/build/doc24_backend",
+            "percent": 0.5,
             "swallows": [
                {
                "class": "^Alacritty$",
-               "instance": "^Alacritty$"
+               "instance": "^alacritty$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 768,
+               "width": 1024,
+               "x": 0,
+               "y": 0
+            },
+            "name": "i3-save-tree --workspace 3 > ~/.i3/layouts/workspace-3.json",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^Alacritty$",
+               "instance": "^alacritty$"
                }
             ],
             "type": "con"
@@ -34,62 +55,12 @@
     "border": "pixel",
     "floating": "auto_off",
     "layout": "splitv",
-    "percent": 0.4,
+    "percent": 0.3,
     "type": "con",
     "nodes": [
         {
-            // tabbed split container with 2 children
-            "border": "pixel",
-            "floating": "auto_off",
-            "layout": "tabbed",
-            "percent": 0.5,
-            "type": "con",
-            "nodes": [
-                {
-                    "border": "pixel",
-                    "current_border_width": 2,
-                    "floating": "auto_off",
-                    "geometry": {
-                       "height": 768,
-                       "width": 1024,
-                       "x": 0,
-                       "y": 0
-                    },
-                    "name": "tristan@T-i3: ~/build",
-                    "percent": 0.5,
-                    "swallows": [
-                       {
-                       "class": "^Alacritty$",
-                       "instance": "^Alacritty$"
-                       }
-                    ],
-                    "type": "con"
-                },
-                {
-                    "border": "pixel",
-                    "current_border_width": 4,
-                    "floating": "auto_off",
-                    "geometry": {
-                       "height": 768,
-                       "width": 1024,
-                       "x": 0,
-                       "y": 0
-                    },
-                    "name": "tristan@T-i3: ~/build/doc24_backend",
-                    "percent": 0.5,
-                    "swallows": [
-                       {
-                       "class": "^Alacritty$",
-                       "instance": "^Alacritty$"
-                       }
-                    ],
-                    "type": "con"
-                }
-            ]
-        },
-        {
-            "border": "pixel",
-            "current_border_width": 2,
+            "border": "none",
+            "current_border_width": 4,
             "floating": "auto_off",
             "geometry": {
                "height": 768,
@@ -97,16 +68,34 @@
                "x": 0,
                "y": 0
             },
-            "name": "nvim .i3/config",
+            "name": "tristan@T-i3: ~",
             "percent": 0.5,
             "swallows": [
                {
-               "class": "^Alacritty$",
-               "instance": "^Alacritty$"
+               "class": "^Alacritty$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 4,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 768,
+               "width": 1024,
+               "x": 0,
+               "y": 0
+            },
+            "name": "tristan@T-i3: ~/build/doc24_backend",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^Alacritty$"
                }
             ],
             "type": "con"
         }
     ]
 }
-// vim:ts=4:sw=4:et
+

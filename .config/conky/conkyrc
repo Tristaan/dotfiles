@@ -69,7 +69,7 @@ color8="FFFFFF",
 -------------------------------------
 --  API Key
 -------------------------------------
-template6="484ee5b6fcb17e5fa7ad811962a88e79",
+template6="2a44967bd3377edc7fe39db81c72e0d8",
 
 
 -------------------------------------
@@ -181,19 +181,14 @@ ${voffset -13}${alignr 39}${color1}Mem${color}
 \
 \
 \
-${if_existing /proc/net/route wlp3s0}
-${voffset -230}${goto 40}${color5}Up: ${color2}${upspeed wlp3s0}${color5}${goto 150}Down: ${color2}${downspeed wlp3s0}
-${voffset 10}${goto 40}${upspeedgraph wlp3s0 26,80 FFFFFF FFFFFF}${goto 150}${downspeedgraph wlp3s0 26,80 FFFFFF FFFFFF}
-${voffset 9}${goto 40}${color5}Sent: ${color2}${totalup wlp3s0}${color5}${goto 150}Received: ${color2}${totaldown wlp3s0}
-${else}
-${if_existing /proc/net/route enp0s1}
-${voffset -344}${goto 40}${color5}Up: ${color2}${upspeed enp0s1}${color5}${goto 150}Down: ${color2}${downspeed enp0s1}
-${voffset 10}${goto 40}${upspeedgraph enp0s1 26,80 FFFFFF FFFFFF}${goto 150}${downspeedgraph enp0s1 26,80 FFFFFF FFFFFF}
-${voffset 9}${goto 40}${color5}Sent: ${color2}${totalup enp0s1}${color5}${goto 150}Received: ${color2}${totaldown enp0s1}
+${if_existing /proc/net/route enp11s0}
+${voffset -230}${goto 40}${color5}Up: ${color2}${upspeed enp11s0}${color5}${goto 150}Down: ${color2}${downspeed enp11s0}
+${voffset 10}${goto 40}${upspeedgraph enp11s0 26,80 FFFFFF FFFFFF}${goto 150}${downspeedgraph enp11s0 26,80 FFFFFF FFFFFF}
+${voffset 9}${goto 40}${color5}Sent: ${color2}${totalup enp11s0}${color5}${goto 150}Received: ${color2}${totaldown enp11s0}
 ${else}
 ${voffset -311}${goto 40}${color5}Network disconnected${color}
 ${image ~/.harmattan-assets/misc/Transparent/God-Mode/offline.png -p 44,284 -s 16x16}
-${endif}${endif}
+${endif}
 \
 \
 \

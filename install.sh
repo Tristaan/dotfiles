@@ -26,6 +26,7 @@ symlink_dotfiles() {
     safe_link "$SCRIPT_DIR/.gitconfig"
     safe_link "$SCRIPT_DIR/.oh-my-zsh"
     safe_link "$SCRIPT_DIR/.zshrc"
+    safe_link "$SCRIPT_DIR/.taskrc"
     for file in .config/*; do
         [ ! -e "$dest" ] && ln -fs "${SCRIPT_DIR}/${file}" "${HOME}/${file}"
     done
@@ -58,6 +59,5 @@ do
     if [ $var == "-l" ]; then
         git submodule init && git submodule update
         symlink_dotfiles
-
     fi
 done
