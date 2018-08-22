@@ -8,8 +8,8 @@
 ;=====================================================
 
 [colors]
-bg = #10101000
-bg2 = #10101033
+bg = #00101010
+bg2 = #20101010
 fg = #f8f8f2
 select = #44475a
 blue = ${env:COLOR_BLUE}
@@ -37,7 +37,7 @@ alert =  ${colors.pink}
 [bar/top]
 monitor = ${env:MONITOR}
 width = 100%
-height = 28
+height = 30
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -86,7 +86,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-color = ${bar/top.background}
-line-size = 4
+line-size = 2
 
 font-0 = "xos4 Terminess Powerline:pixelsize=16"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=16;1"
@@ -100,7 +100,7 @@ module-margin-right = 1
 modules-left = i3
 modules-right = cpu memory powermenu
 
-border-size = 3
+border-size = 0
 border-color = ${colors.background}
 
 [module/i3]

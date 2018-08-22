@@ -35,15 +35,12 @@ font pango: xos4 Terminus, Font Awesome 5 Free, Font Awesome 5 Brands 12
 
 #-----T-i3-----#
 #class                  border  backgr. text    indicator
-client.focused          #225396 #7592bA #ffffff #2e9ef4
-client.focused_inactive #15325A #032048 #ffffff #484e50
-client.urgent           #2f343a #900000 #ffffff #900000
+client.focused          #ffffff #f8f8f2 #ffffff #8be9fd
+client.focused_inactive #44475a #44475a #ffffff #6272a4
+client.urgent           #ff79c6 #900000 #ffffff #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #ffffff
 
-new_window normal 4
-new_float normal 5
-hide_edge_borders smart
 #//APPEARANCE//#
 
 set $mod Mod4
@@ -53,6 +50,7 @@ set $m  Mod3
 #--WINDOW-SETTINGS--#
 floating_modifier $mod
 for_window [class=".*"] title_format "-> %title"
+for_window [class=".*"] border pixel 2
 for_window [class="Pavucontrol"] floating enable
 for_window [class="octopi"] floating enable
 for_window [class="lxappearance"] floating enable
@@ -196,12 +194,6 @@ bindsym $m+Shift+F2 move container to workspace $WSW2
 bindsym $m+Shift+F3 move container to workspace $WSW3
 bindsym $m+Shift+F4 move container to workspace $WSW4
 
-#GAPS
-gaps inner 5
-gaps outer 2
-workspace $ws2 gaps outer 0
-workspace $ws2 gaps inner 0
-
 #Multiple screens
 bindsym $mod+Left move container to output left
 bindsym $mod+Right move container to output right
@@ -212,6 +204,14 @@ bindsym $mod+Down move container to output down
 bindsym $mod+Shift+Up move workspace to output up
 bindsym $mod+Shift+Down move workspace to output down
 #//WORKSPACES//#
+
+#--BORDER--#
+default_border pixel 2
+default_floating_border normal 4
+smart_borders on
+gaps inner 4
+gaps outer 10
+#//BORDER//#
 
 #--LAYOUTS--#
 bindsym $alt+Shift+l exec $HOME/.i3/scripts/workspace.sh "$HOME/.i3/layouts/workspace-3.json" "$HOME/build/doc24_backend"
