@@ -34,14 +34,14 @@ font pango: xos4 Terminus, Font Awesome 5 Free, Font Awesome 5 Brands 12
 #client.background       #ffffff
 
 #-----T-i3-----#
-#class                 border  backgr. text    indicator
+#class                  border  backgr. text    indicator
 client.focused          #225396 #7592bA #ffffff #2e9ef4
 client.focused_inactive #15325A #032048 #ffffff #484e50
 client.urgent           #2f343a #900000 #ffffff #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000
 client.background       #ffffff
 
-new_window pixel 4
+new_window normal 4
 new_float normal 5
 hide_edge_borders smart
 #//APPEARANCE//#

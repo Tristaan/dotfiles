@@ -8,35 +8,36 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #15325A
-background-alt = #25426A
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #55729A
-alert = #bd2c40
-black   = #1d1d1d
-red     = #d73555
-green   = #35d755
-yellow  = #d7d755
-blue    = #3555d7
-magenta = #d755d7
-cyan    = #55b7b7
-white   = #e7e7e7
-bright_black   = '0x303030'
-bright_red     = '0xc76484'
-bright_green   = '0x64c784'
-bright_yellow  = '0xc7c784'
-bright_blue    = '0x6484c7'
-bright_magenta = '0x7355d7'
-bright_cyan    = '0x84c7c7'
-bright_white   = '0xd7d7d7'
+bg = #10101000
+bg2 = #10101033
+fg = #f8f8f2
+select = #44475a
+blue = ${env:COLOR_BLUE}
+cyan = ${env:COLOR_CYAN}
+pink = #ff79c6
+purple = #bd93f9
+green = ${env:COLOR_GREEN}
+orange = #ffb86c
+red = #ff5555
+yellow = #f1fa8c
 
+;++++++++++++++++++++++
+
+;background = ${xrdb:color0:#222}
+background = ${colors.bg}
+background-alt = ${colors.select}
+background-alt2 = ${colors.bg2}
+;foreground = ${xrdb:color7:#222}
+foreground = ${colors.fg}
+foreground-alt = ${colors.select}
+primary = ${colors.purple}
+secondary = ${colors.cyan}
+alert =  ${colors.pink}
 
 [bar/top]
 monitor = ${env:MONITOR}
 width = 100%
-height = 30
+height = 28
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
@@ -45,33 +46,62 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
+line-size = 0
 line-color = #f00
 
 border-size = 0
-border-color = #00000000
+border-color = ${colors.background-alt}
 
-module-padding-left = 1
-module-padding-right = 1
+spacing = 1
+padding = 1
 
-module-margin-left = 0
-module-margin-right = 1
+module-margin-left = 1
+module-margin-right = 0
 
-font-0 = "xos4 Terminus:pixelsize=16"
+font-0 = "xos4 Terminess Powerline:pixelsize=16"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=16;1"
-font-2 = "Font Awesome 5 Brands:style=Solid:pixelsize=16;1"
+font-2 = "Font Awesome 5 Brands:style=Regular:pixelsize=16;1"
 
-modules-left = i3
+modules-left = filesystem wired-network wireless-network volume
 modules-center = xwindow
-modules-right = filesystem wired-network wireless-network volume battery xkeyboard cpu memory date powermenu
+modules-right = battery xkeyboard date
 
 tray-position = right
-tray-padding = 2
+tray-padding = 1
+tray-background = ${colors.background}
+tray-transparent = true
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[bar/bottom]
+monitor = DP-1
+bottom = true
+width = 100%
+height = 30
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-color = ${bar/top.background}
+line-size = 4
+
+font-0 = "xos4 Terminess Powerline:pixelsize=16"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=16;1"
+font-2 = "Font Awesome 5 Brands:style=Regular:pixelsize=16;1"
+
+spacing = 0
+padding = 1
+module-margin-left = 1
+module-margin-right = 1
+
+modules-left = i3
+modules-right = cpu memory powermenu
+
+border-size = 3
+border-color = ${colors.background}
 
 [module/i3]
 type = internal/i3
@@ -84,13 +114,13 @@ strip-wsnumbers = true
 pin-workspaces = true
 
 label-mode-padding = 1
-label-mode-foreground = ${colors.black}
-label-mode-background = ${colors.cyan}
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background-alt2}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
 label-focused-background = ${colors.background-alt}
-label-focused-underline=  ${colors.cyan}
+label-focused-underline=  ${colors.primary}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
@@ -105,13 +135,13 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${colors.red}
+label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 [module/xwindow]
 type = internal/xwindow
 label =  %title:0:30:...%
-format-foreground = ${colors.white}
+format-foreground = ${colors.foreground-alt}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -120,7 +150,6 @@ blacklist-1 = scroll lock
 blacklist-2 = caps lock
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.red}
 
 label-layout = %layout%
@@ -136,8 +165,8 @@ format-unmounted = <label-unmounted>
 mount-0 = /
 mount-1 = /media
 
-label-mounted = %{F#55b7b7}%mountpoint%%{F-}: %free%
-label-unmounted = %mountpoint%
+label-mounted = ${env:LABEL_MOUNTED}
+label-unmounted =
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/cpu]
@@ -146,7 +175,6 @@ interval = 2
 format = <ramp-coreload>
 format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.yellow}
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
 ramp-coreload-2 = ▃
@@ -162,15 +190,14 @@ interval = 2
 format = <bar-used>
 format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.green}
 label = %gb_used%/%gb_total%
 
 bar-used-indicator =
 bar-used-width = 12
-bar-used-foreground-0 = ${colors.bright_green}
-bar-used-foreground-1 = ${colors.green}
-bar-used-foreground-2 = ${colors.red}
-bar-used-foreground-3 = ${colors.bright_red}
+bar-used-foreground-0 = ${colors.green}
+bar-used-foreground-1 = ${colors.foreground}
+bar-used-foreground-2 = ${colors.orange}
+bar-used-foreground-3 = ${colors.red}
 bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = ${colors.foreground-alt}
@@ -189,7 +216,7 @@ format-packetloss = <animation-packetloss> <label-connected>
 label-connected = %essid%
 label-connected-foreground = ${colors.green}
 label-disconnected = %ifname%
-label-disconnected-foreground = ${colors.bright_red}
+label-disconnected-foreground = ${colors.alert}
 
 ramp-signal-0 = ▁
 ramp-signal-1 = ▃
@@ -201,30 +228,30 @@ ramp-signal-5 = █
 animation-packetloss-0 = 
 animation-packetloss-0-foreground = ${colors.yellow}
 animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${colors.black}
+animation-packetloss-1-foreground = ${colors.foreground-alt}
 ; Framerate in milliseconds
 animation-packetloss-framerate = 500
 
 [module/wired-network]
 type = internal/network
-interface = enp0s20u2
-interval = 1.0
+interface = enp9s0
+interval = 2
 
-udspeed-minwidth = 5
+udspeed-minwidth = 2
 accumulate-stats = true
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <animation-packetloss> <label-connected>
 
-label-connected = %local_ip%%downspeed:1:4%
+label-connected = ${env:LABEL_NETWORK_CONNECTED}
 label-connected-foreground = ${colors.green}
 label-disconnected = %ifname%
-label-disconnected-foreground = ${colors.bright_red}
+label-disconnected-foreground = ${colors.alert}
 ; Only applies if <animation-packetloss> is used
 animation-packetloss-0 = 
 animation-packetloss-0-foreground = ${colors.yellow}
 animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${colors.black}
+animation-packetloss-1-foreground = ${colors.foreground-alt}
 ; Framerate in milliseconds
 animation-packetloss-framerate = 500
 
@@ -238,6 +265,8 @@ time-format = %H:%M
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full-foreground = ${colors.green}
+format-charging-foreground = ${colors.yellow}
+format-discharging-foreground = ${colors.cyan}
 label-charging = %percentage%%
 label-discharging = %time%
 label-full = 
@@ -267,39 +296,27 @@ date-alt = " %d/%m/%Y"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = ${colors.foreground}
 format-prefix= 
 format-underline = ${colors.blue}
 
 label = %time%%date%
 
 [module/volume]
-type = internal/alsa
+type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = "VOL"
-label-volume-foreground = ${root.foreground}
+format-volume = <ramp-volume>: <label-volume>
+label-muted = : MUTE
+label-muted-foreground = ${colors.foreground-alt}
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+ramp-volume-0-foreground = ${colors.cyan}
+ramp-volume-1-foreground = ${colors.cyan}
+ramp-volume-2-foreground = ${colors.cyan}
+ramp-volume-3-foreground = ${colors.red}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
 
 [module/powermenu]
 type = custom/menu
