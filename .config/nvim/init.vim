@@ -55,6 +55,8 @@ if has("mouse")
 endif
 set mousehide           " Hide mouse pointer on insert mode."
 
+"set iskeyword+=:
+
 "MAPPINGS
 set pastetoggle=<F2>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
@@ -115,7 +117,6 @@ call plug#begin('~/.config/nvim/bundle')
 "Interfaces
 Plug 'Shougo/unite.vim'
 Plug 'mhinz/vim-startify'
-Plug 'git-time-metric/gtm-vim-plugin'
 "Arduino
 Plug 'z3t0/arduvim'
 
@@ -134,6 +135,7 @@ Plug 'Shougo/deoplete-rct'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-latex/vim-latex'
 Plug 'noahfrederick/vim-laravel'
+Plug '1995parham/vim-spice'
 
 "GIT
 Plug 'tpope/vim-fugitive'
@@ -150,6 +152,7 @@ Plug 'mattn/emmet-vim'
 "syntax, colorscheme, etc. (visuals)
 Plug 'chrisbra/Colorizer'
 Plug 'itchyny/lightline.vim'
+Plug '1995parham/vim-spice'
 Plug 'mgee/lightline-bufferline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -196,7 +199,6 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='firefox'
 let g:Tex_CompileRule_pdf='pdflatex -shell-escape'
-set iskeyword+=:
 
 "POLYGLOT
 let g:polyglot_disabled = ['css', 'html', 'javascript']
@@ -368,6 +370,12 @@ augroup Vuefix
     au!
     au BufRead,BufNewFile *.vue setlocal filetype=vue
     au Filetype vue syntax sync fromstart
+augroup END
+
+augroup spicefix
+    au!
+    au BufRead,BufNewFile *.cir setlocal filetype=spice
+    au Filetype spice syntax sync fromstart
 augroup END
 
 augroup newfiles
