@@ -1,27 +1,32 @@
 # T's desktop v3
 #exec --no-stratup-id xrandr --output eDP1 --primary --auto
-exec --no-startup-id xrandr --output HDMI-0 --auto --mode 2048x1152 --primary
-exec_always --no-startup-id $HOME/.i3/scripts/polybar_launch.sh
-exec --no-startup-id compton -G -b
-exec --no-startup-id mplayer -fs $HOME/.i3/boot.mp4
-exec --no-startup-id conky -c $HOME/.config/conky/conkyrc
-exec --no-startup-id xset -dpms && xset s noblank && xset s noexpose && xset dpms 600 1800 360
-exec --no-startup-id synclient TapButton1=1
-exec xautolock -time 10 -locker $HOME/.i3/scripts/locker.sh
-exec xautolock -locknow
+#exec --no-startup-id xrandr --output HDMI-0 --auto --mode 2048x1152 --primary
+#exec_always --no-startup-id $HOME/.i3/scripts/polybar_launch.sh
+#exec --no-startup-id lxqt-policykit-agent
+#exec --no-startup-id compton -G -b
+#exec --no-startup-id mplayer -fs $HOME/.i3/boot.mp4
+#exec --no-startup-id conky -c $HOME/.config/conky/conkyrc
+#exec --no-startup-id xset -dpms && xset s noblank && xset s noexpose && xset dpms 600 1800 360
+#exec --no-startup-id synclient TapButton1=1
+#exec xautolock -time 10 -locker $HOME/.i3/scripts/locker.sh
+#exec xautolock -locknow
 #DAEMONS
 #exec --no-startup-id urxvtd -q
-exec --no-startup-id udiskie -t
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id dunst
+#exec --no-startup-id udiskie -t
+#exec --no-startup-id nitrogen --restore
+#exec --no-startup-id dunst
 #exec --no-startup-id mpd
-exec --no-startup-id megasync
-exec --no-startup-id parcellite
-exec --no-startup-id dunst
-exec --no-startup-id blueman-applet
+#exec --no-startup-id megasync
+#exec --no-startup-id parcellite
+#exec --no-startup-id dunst
+#exec --no-startup-id blueman-applet
 #Layout
-exec setxkbmap us altgr-intl
-exec xmodmap $HOME/.i3/custom.map
+#exec setxkbmap us altgr-intl
+#exec xmodmap $HOME/.i3/custom.map
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-flashback
 
 font pango: xos4 Terminus, Font Awesome 5 Free, Font Awesome 5 Brands 12
 
