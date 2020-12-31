@@ -28,9 +28,9 @@ symlink_dotfiles() {
     safe_link "$SCRIPT_DIR/.zshrc"
     safe_link "$SCRIPT_DIR/.taskrc"
     for file in .config/*; do
-        [ ! -e "$dest" ] && ln -fs "${SCRIPT_DIR}/${file}" "${HOME}/${file}"
+        [ ! -e "${HOME}/${file}" ] && ln -fs "${SCRIPT_DIR}/${file}" "${HOME}/${file}"
     done
-    [ ! -e "$dest" ] && ln -fs "${SCRIPT_DIR}/zsh-themes" "${HOME}/.oh-my-zsh/custom/themes"
+    [ ! -e "${HOME}/.oh-my-zsh/custom/themes" ] && ln -fs "${SCRIPT_DIR}/zsh-themes" "${HOME}/.oh-my-zsh/custom/themes"
 
 }
 for var in "$@"
