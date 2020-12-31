@@ -162,8 +162,8 @@ format-mounted = <label-mounted>
 format-unmounted = <label-unmounted>
 
 mount-0 = /
-mount-1 = /media
 mount-2 = /home
+mount-1 = /media
 spacing = 1
 
 label-mounted = ${env:LABEL_MOUNTED}
@@ -235,7 +235,7 @@ animation-packetloss-framerate = 500
 
 [module/wired-network]
 type = internal/network
-interface = enp9s0
+interface = enp10s0
 interval = 2
 
 udspeed-minwidth = 2

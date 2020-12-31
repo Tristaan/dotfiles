@@ -29,7 +29,7 @@ if !&diff
     set cursorline
 endif
 set autoindent "Automatic indentation of files
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab "Tab Settings
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab "Tab Settings
 set nosol
 
 set fileformats=unix,dos,mac
@@ -110,6 +110,11 @@ noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>b :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
+
+"POLYGLOT
+let g:polyglot_disabled = ['css', 'html', 'javascript']
+let g:vue_disable_pre_processors=0
+
 "Plugins
 filetype off
 call plug#begin('~/.config/nvim/bundle')
@@ -136,6 +141,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-latex/vim-latex'
 Plug 'noahfrederick/vim-laravel'
 Plug '1995parham/vim-spice'
+" Plug 'https://gitlab.com/code-stats/code-stats-vim.git'
+
 
 "GIT
 Plug 'tpope/vim-fugitive'
@@ -160,7 +167,11 @@ Plug 'vim-scripts/octave.vim--'
 Plug 'sheerun/vim-polyglot'
 Plug 'tristaan/vim-smooth'
 Plug 'vivien/vim-linux-coding-style'
+Plug 'sirtaj/vim-openscad'
 call plug#end()
+
+"CODESTATS
+let g:codestats_api_key = 'SFMyNTY.WW1scmIyNXFZVE16IyNORFUzTnc9PQ.ad9U5r6g8iyXiE4Jlp3vfU_IGSHRwogX1-fXn8PZdBw'
 
 "PYTHON
 let g:python_host_prog  = '/usr/bin/python2'
@@ -200,10 +211,6 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_ViewRule_pdf='firefox'
 let g:Tex_CompileRule_pdf='pdflatex -shell-escape'
 
-"POLYGLOT
-let g:polyglot_disabled = ['css', 'html', 'javascript']
-let g:vue_disable_pre_processors=0
-
 "ARDUINO
 let g:arduino_dir = '/usr/share/arduino'
 
@@ -212,7 +219,6 @@ let g:ale_linters = {
 \   'c': ['clang']
 \}
 let g:ale_c_clang_options = '-std=gnu11 -Wall -Wextra -Werror -lusb-1.0 -fexceptions -DNDEBUG'
-set statusline+=%{ALEGetStatusLine()}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 "STARTIFY
@@ -260,7 +266,8 @@ let g:lightline = {
             \ },
             \ 'mode_map': { 'c': 'NORMAL' },
             \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+            \   'right': [ [ 'lineinfo' ], [ 'percent', 'codestats' ], [ 'fileformat', 'fileencoding', 'filetype' ] ]
             \ },
             \ 'component_function': {
             \ 'bufferbefore': 'lightline#buffer#bufferbefore',
@@ -274,6 +281,7 @@ let g:lightline = {
             \ 'filetype': 'LightlineFiletype',
             \ 'fileencoding': 'LightlineFileencoding',
             \ 'mode': 'LightlineMode',
+            \ 'codestats': 'CodeStatsXp'
             \ },
             \ 'separator': { 'left': '', 'right': '' },
             \ 'subseparator': { 'left': '', 'right': '' }
@@ -363,7 +371,7 @@ augroup END
 augroup filetypes
     au!
     au FileType eruby let b:surround_45 = "<%= \r %>"
-    au FileType html,css,eruby,php EmmetInstall
+    au FileType html,css,eruby,php,vue EmmetInstall
 augroup END
 
 augroup Vuefix
