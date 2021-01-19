@@ -22,16 +22,9 @@ else
     ZSH_THEME="T-netbook"
 fi
 
-plugins=(git git-extras ruby capistrano bundler archlinux zsh-autosuggestions)
+plugins=(git git-extras archlinux)
 
 source $ZSH/oh-my-zsh.sh
-
-export RUBY_GC_HEAP_INIT_SLOTS=800000
-export RUBY_HEAP_FREE_MIN=100000
-export RUBY_HEAP_SLOTS_INCREMENT=300000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=79000000
-
 # export MANPATH="/usr/local/man:$MANPATH"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
@@ -59,11 +52,4 @@ alias ccat="source-highlight --out-format=esc -i"
 alias lal="ls -la"
 alias lh="ls -lh"
 alias ip="ip -c"
-alias be="bundle exec"
-alias ber="bundle exec rails"
 alias ssc="sudo systemctl"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$HOME/.rvm/bin:$PATH"
-
-source $HOME/.rvm/scripts/rvm

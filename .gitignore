@@ -3,3 +3,5 @@
 .config/ranger/bookmarks
 .config/systemd/user/default.target.wants
 .config/systemd/user/timers.target.wants
+.zsh-update
+.config/htop

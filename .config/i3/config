@@ -1,43 +1,33 @@
 # T's desktop v3
 #exec --no-stratup-id xrandr --output eDP1 --primary --auto
 #exec --no-startup-id xrandr --output HDMI-0 --auto --mode 2048x1152 --primary
-#exec_always --no-startup-id $HOME/.i3/scripts/polybar_launch.sh
-#exec --no-startup-id lxqt-policykit-agent
-#exec --no-startup-id compton -G -b
+exec_always --no-startup-id $HOME/.config/i3/scripts/polybar_launch.sh
+exec --no-startup-id compton -G -b
 #exec --no-startup-id mplayer -fs $HOME/.i3/boot.mp4
 #exec --no-startup-id conky -c $HOME/.config/conky/conkyrc
-#exec --no-startup-id xset -dpms && xset s noblank && xset s noexpose && xset dpms 600 1800 360
-#exec --no-startup-id synclient TapButton1=1
-#exec xautolock -time 10 -locker $HOME/.i3/scripts/locker.sh
+exec --no-startup-id xset -dpms && xset s noblank && xset s noexpose && xset dpms 600 1800 360
+exec --no-startup-id synclient TapButton1=1
+exec xautolock -time 10 -locker $HOME/config/i3/scripts/locker.sh
 #exec xautolock -locknow
 #DAEMONS
-#exec --no-startup-id urxvtd -q
-#exec --no-startup-id udiskie -t
-#exec --no-startup-id nitrogen --restore
-#exec --no-startup-id dunst
+exec --no-startup-id udiskie -t
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id dunst
 #exec --no-startup-id mpd
 #exec --no-startup-id megasync
 #exec --no-startup-id parcellite
-#exec --no-startup-id dunst
-#exec --no-startup-id blueman-applet
+exec --no-startup-id blueman-applet
 #Layout
-#exec setxkbmap us altgr-intl
+exec setxkbmap us altgr-intl
 #exec xmodmap $HOME/.i3/custom.map
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
+#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec--no-startup-id gnome-power-manager
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id gnome-flashback
+#exec --no-startup-id gnome-flashback
 
 font pango: xos4 Terminus, Font Awesome 5 Free, Font Awesome 5 Brands 12
 
 #--APPEARANCE--#
-#--T-netbook---#
-#client.focused          #464A55 #464A55 #969AA5 #ffffff
-#client.focused_inactive #272B35 #9b9aa6 #ffffff #48504e
-#client.urgent           #272B35 #900000 #ffffff #900000
-#client.placeholder      #000000 #0c0c0c #ffffff #000000
-#client.background       #ffffff
-
 #-----T-i3-----#
 #class                  border  backgr. text    indicator
 client.focused          #f8f8f2 #f8f8f2 #44475a #8be9fd
@@ -107,8 +97,8 @@ bindsym $mod+space focus mode_toggle
 
 #--CUSTOM COMMANDS--#
 #KEYBOARD LAYOUT SWITCHING
-bindsym $alt+F3 exec --no-startup-id setxkbmap us altgr-intl && xmodmap ~/.i3/custom.map
-bindsym $alt+F2 exec --no-startup-id setxkbmap si
+#bindsym $alt+F3 exec --no-startup-id setxkbmap us altgr-intl && xmodmap ~/.i3/custom.map
+#bindsym $alt+F2 exec --no-startup-id setxkbmap si
 
 #LAUNCH PROGRAM
 bindsym $mod+d exec --no-startup-id rofi -color-enabled -show run -font "xos4 Terminus 18"
@@ -125,24 +115,22 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioStop exec mpc stop
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc previous
-bindsym XF86AudioMute exec ~/.i3/scripts/volume_set.sh mute
-bindsym XF86AudioRaiseVolume exec ~/.i3/scripts/volume_set.sh up
-bindsym XF86AudioLowerVolume exec ~/.i3/scripts/volume_set.sh down
+bindsym XF86AudioMute exec ~/.config/i3/scripts/volume_set.sh mute
+bindsym XF86AudioRaiseVolume exec ~/.config/i3/scripts/volume_set.sh up
+bindsym XF86AudioLowerVolume exec ~/.config/i3/scripts/volume_set.sh down
 bindsym XF86MonBrightnessUp exec xbacklight +5
 bindsym XF86MonBrightnessDown exec xbacklight -5
 bindsym XF86KbdBrightnessUp exec asus-kbd-backlight up
 bindsym XF86KbdBrightnessDown exec asus-kbd-backlight down
-bindsym XF86Sleep exec ~/.i3/scripts/locker.sh & systemctl suspend
-bindsym $mod+Shift+p exec ~/.i3/scripts/locker.sh & systemctl suspend
-bindsym $mod+Shift+o exec ~/.i3/scripts/locker.sh
+bindsym XF86Sleep exec ~/.config/i3/scripts/locker.sh & systemctl suspend
+bindsym $mod+Shift+p exec ~/.config/i3/scripts/locker.sh & systemctl suspend
+bindsym $mod+Shift+o exec ~/.config/i3/scripts/locker.sh
 
 #SHUTDOWN+RESTART
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+z exec "i3-msg exit"
-bindsym $mod+Shift+e exec ~/.i3/scripts/locker.sh
-#SHUTDOWN MENU
-bindsym $alt+F4 exec --no-startup-id ~/.i3/scripts/shutdown_menu
+bindsym $mod+Shift+e exec ~/.config/i3/scripts/locker.sh
 
 #//CUSTOM COMMANDS//#
 
@@ -219,7 +207,7 @@ gaps outer 10
 #//BORDER//#
 
 #--LAYOUTS--#
-bindsym $alt+Shift+l exec $HOME/.i3/scripts/workspace.sh "$HOME/.i3/layouts/workspace-3.json" "$HOME/build/doc24_backend"
+#bindsym $alt+Shift+l exec $HOME/.i3/scripts/workspace.sh "$HOME/.i3/layouts/workspace-3.json" "$HOME/build/doc24_backend"
 #//LAYOUTS//#
 
 # resize window (you can also use the mouse for that)

@@ -30,7 +30,7 @@ symlink_dotfiles() {
     for file in .config/*; do
         [ ! -e "${HOME}/${file}" ] && ln -fs "${SCRIPT_DIR}/${file}" "${HOME}/${file}"
     done
-    [ ! -e "${HOME}/.oh-my-zsh/custom/themes" ] && ln -fs "${SCRIPT_DIR}/zsh-themes" "${HOME}/.oh-my-zsh/custom/themes"
+    [ -e "${HOME}/.oh-my-zsh/custom/themes" ] && rm -r "${HOME}/.oh-my-zsh/custom/themes" && ln -fs "${SCRIPT_DIR}/zsh-themes" "${HOME}/.oh-my-zsh/custom/themes"
 
 }
 for var in "$@"
@@ -40,20 +40,22 @@ do
     fi
 
     # Install already build packages
+    if [ $var == "-i" ] ; then
+        sudo pacman -S zsh zsh-autosuggestions zsh-syntax-highlighting alacritty neovim i3-gaps ctags udiskie nitrogen compton dunst rofi terminus-font openssh lxappearance xsel conky firejail wget ttf-font-awesome
+        sudo firecfg
+    fi
     if [ $var == "-t" ] ; then
-        sudo pacman -S zsh zsh-syntax-highlighting neovim i3-gaps ctags mplayer udiskie nitrogen compton dunst rofi terminus-font openssh lxappearance xsel conky firejail linux-hardened wget ttf-font-awesome
         wget https://aur.archlinux.org/cgit/aur.git/snapshot/trizen.tar.gz
         tar -xvf trizen.tar.gz
         cd trizen
         makepkg -sri
         cd ..
         rm -r trizen*
-        sudo firecfg
     fi
 
     # Install packages from the AUR
     if [ $var == "-ii" ]; then
-        trizen -S polybar megasync alacritty-scrollback-git i3lock-color-git terminess-powerline-font-git arc-gtk-theme numix-circle-arc-icons-git pulsemixer
+        trizen -S polybar i3lock-color-git terminess-powerline-font-git arc-gtk-theme numix-circle-arc-icons-git pulsemixer
     fi
 
     if [ $var == "-l" ]; then
