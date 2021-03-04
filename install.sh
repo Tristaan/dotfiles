@@ -16,7 +16,6 @@ safe_link(){
 symlink_dotfiles() {
 
     if [[ $machine == 'Linux' ]]; then
-        safe_link "$SCRIPT_DIR/.i3"
         safe_link "$SCRIPT_DIR/.Xresources"
         safe_link "$SCRIPT_DIR/.dmrc"
     elif [[ $machine == 'Darwin' ]]; then
