@@ -30,7 +30,7 @@ font pango: xos4 Terminus, Font Awesome 5 Free, Font Awesome 5 Brands 12
 #--APPEARANCE--#
 #-----T-i3-----#
 #class                  border  backgr. text    indicator
-client.focused          #f8f8f2 #f8f8f2 #44475a #8be9fd
+client.focused          #f8f8f2 #f8f8f2 #44475a #bd93f9
 client.focused_inactive #44475a #44475a #ffffff #6272a4
 client.urgent           #ff79c6 #900000 #ffffff #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000
@@ -92,13 +92,11 @@ bindsym $mod+c split v
 bindsym $mod+u border pixel 4
 
 bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
 #//CONTAINERS+WINDOWS//#
 
 #--CUSTOM COMMANDS--#
 #KEYBOARD LAYOUT SWITCHING
-#bindsym $alt+F3 exec --no-startup-id setxkbmap us altgr-intl && xmodmap ~/.i3/custom.map
-#bindsym $alt+F2 exec --no-startup-id setxkbmap si
+bindsym $mod+space exec --no-startup-id ~/.config/i3/scripts/kbd_layout.sh
 
 #LAUNCH PROGRAM
 bindsym $mod+d exec --no-startup-id rofi -color-enabled -show run -font "xos4 Terminus 18"
@@ -204,6 +202,7 @@ default_floating_border normal 4
 smart_borders on
 gaps inner 4
 gaps outer 10
+smart_gaps on
 #//BORDER//#
 
 #--LAYOUTS--#
