@@ -46,7 +46,9 @@ do
 			rm -r trizen*
 		elif [[ $machine == 'Darwin' ]]; then
 			NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-			brew install alacritty terminus
+      brew tap homebrew/cask-fonts
+			brew install alacritty
+      brew install --cask font-terminus
 		fi
 	fi
 done
