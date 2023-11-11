@@ -22,11 +22,10 @@ else
     ZSH_THEME="T-netbook"
 fi
 
-plugins=(git git-extras archlinux)
+plugins=(git git-extras)
 
 source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
-export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -34,22 +33,11 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 #Preferred editor for local and remote sessions
 export EDITOR='nvim'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+if [[ "${UNAME}" == "Linux" ]]; then
+    alias ccat="source-highlight --out-format=esc -i"
+    alias lal="ls -la"
+    alias lh="ls -lh"
+    alias ip="ip -c"
+    alias ssc="sudo systemctl"
+fi
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ccat="source-highlight --out-format=esc -i"
-alias lal="ls -la"
-alias lh="ls -lh"
-alias ip="ip -c"
-alias ssc="sudo systemctl"

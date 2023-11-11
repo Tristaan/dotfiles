@@ -1,6 +1,0 @@
-clear mod4
-clear mod3
-keycode 94 = Hyper_L Hyper_L Hyper_L Hyper_L Hyper_L Hyper_L Hyper_L
-keycode 135 = Super_R Super_R Super_R Super_R Super_R Super_R Super_R
-add        mod3 = Hyper_L
-add        mod4 = Super_L Super_R

@@ -1,9 +1,0 @@
-[Unit]
-Description=This is an automatic background changer service
-
-[Service]
-Type=simple
-ExecStart=/home/tristan/.i3/scripts/rotate_background.sh
-
-[Install]
-WantedBy=default.target
