@@ -46,7 +46,7 @@ do
 			rm -r trizen*
 		elif [[ $machine == 'Darwin' ]]; then
 			NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-			berew install alacritty terminus
+			brew install alacritty terminus
 		fi
 	fi
 done
