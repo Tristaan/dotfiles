@@ -113,7 +113,7 @@ mods = "Control"
 
 [[keyboard.bindings]]
 action = "DecreaseFontSize"
-key = "Underline"
+key = "Minus"
 mods = "Control"
 
 [[keyboard.bindings]]
